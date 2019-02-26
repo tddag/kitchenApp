@@ -1,0 +1,21 @@
+.NavClass {
+    list-style: none;
+    padding: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.NavClass li {
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 20px;
+    color: black;
+}
+
+.NavClass li a {
+    text-decoration: none;
+    color: black;
+}
+
+.NavClass li a.active {
+    color: green;
+}
