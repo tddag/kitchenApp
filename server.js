@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 // // use additional HTTP headers to tell browser to let web app
 // // running at one origin (domain) have permission to access 
 // // selected resouces from a server at a different origin
+const Item = require("./models/item");
 
 // DB config
 const db = require('./config/keys').mongoURI;
@@ -37,6 +38,16 @@ const io = socketIO(server);
 // IO connection handling
 io.on("connection", socket => {
     console.log("New client connected" + socket.id);
+
+    // Get all the food items
+    socket.on("initial_data", () => {
+        Item.find().exec((err, items) => {
+            if (!err) {
+                console.log(items);
+                io.sockets.emit("get_data", items);
+            }
+        });
+    })
 
     // disconnect fired when a client leaves the server
     socket.on("disconnect", () => {
