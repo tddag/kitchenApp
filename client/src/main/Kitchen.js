@@ -16,9 +16,17 @@ class Kitchen extends Component {
         this.setState({ food_data: foodItems });
     }
 
+    changeData = () => socket.emit("initial_data");
+
     componentDidMount() {
         socket.emit("initial_data");
         socket.on("get_data", this.getData);
+        socket.on("change_data", this.changeData);
+    }
+
+    componentWillUnmount() {
+        socket.off("get_data");
+        socket.off("change_data");
     }
 
     getFoodData() {

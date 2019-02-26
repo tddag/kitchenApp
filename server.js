@@ -43,10 +43,21 @@ io.on("connection", socket => {
     socket.on("initial_data", () => {
         Item.find().exec((err, items) => {
             if (!err) {
-                console.log(items);
                 io.sockets.emit("get_data", items);
             }
         });
+    })
+
+    // Placing the order
+    // called from [FrontEnd] ./client/src/main/PlaceOrder.js
+    socket.on("putOrder", order => {
+        console.log(order.order);
+        Item.findByIdAndUpdate(order._id, { $inc: {ordQty: order.order}})
+            .then(updatedDoc => {
+                // Emitting event to update the Kitchen
+                // opened across the devices with the real time values
+                io.sockets.emit("change_data");
+            })
     })
 
     // disconnect fired when a client leaves the server
