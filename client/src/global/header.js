@@ -26,7 +26,7 @@ class Header extends Component {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/updateprediected">
+                            <NavLink to="/updatepredicted">
                                 Change Predicted
                             </NavLink>
                         </li>

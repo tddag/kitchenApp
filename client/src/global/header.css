@@ -19,3 +19,8 @@
 .NavClass li a.active {
     color: green;
 }
+
+.h2Class {
+    color: green;
+    margin-bottom: 30px;
+}
