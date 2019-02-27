@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
 const mongoose = require("mongoose");
+const path = require('path');
 // const cors = require("cors");
 // // CORS -- Cross-Origin Resouces Sharing
 // // use additional HTTP headers to tell browser to let web app
@@ -89,6 +90,16 @@ io.on("connection", socket => {
         console.log("user disconneted");
     })
 })
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder 
+    app.use(express.static('client/build'));
+    
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
 
 // Set port 
 const port = process.env.PORT || 5001;

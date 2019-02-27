@@ -4,11 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client-install": "npm install --prefix client",
+    "start": "node sever.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
   },
   "author": "Tam Dang",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.15",
