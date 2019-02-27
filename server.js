@@ -60,6 +60,18 @@ io.on("connection", socket => {
             })
     })
 
+    // Order completion which single item get done
+    // update data ordQty: -1, prodQty: +1
+    // called from [FrontEnd] ./client/src/main/Kitchen.js
+    socket.on("mark_done", id => {
+        Item.findByIdAndUpdate(
+            id,
+            {$inc: {ordQty: -1, prodQty: +1}}
+        ).then(updatedDoc => {
+            io.sockets.emit("change_data");
+        }); 
+    });
+
     // Change the predicted quantity
     // called from [FrontEnd] ./client/src/main/ChangePredicted.js
     socket.on("ChangePred", predicted_data => {

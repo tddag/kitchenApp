@@ -35,6 +35,11 @@ class Header extends Component {
                                 Kitchen
                             </NavLink>
                         </li>
+                        <li>
+                            <a href="https://github.com/tddag">
+                                Github
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </header>

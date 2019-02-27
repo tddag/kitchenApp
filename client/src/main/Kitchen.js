@@ -29,6 +29,10 @@ class Kitchen extends Component {
         socket.off("change_data");
     }
 
+    markDone = id => {
+        socket.emit("mark_done", id);
+    }
+
     getFoodData() {
         return this.state.food_data.map(food => {
             return (
@@ -38,7 +42,7 @@ class Kitchen extends Component {
                     <td> {food.prodQty} </td>
                     <td> {food.predQty} </td>
                     <td> 
-                        {/* <Button onClick={() => this.markDone(food._id)}> Done</Button> */}
+                        <Button onClick={() => this.markDone(food._id)}> Done</Button>
                     </td>
                 </tr>
             )
