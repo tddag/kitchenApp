@@ -32,7 +32,7 @@ class PlaceOrder extends Component {
     sendOrder = id => {
         let order_details;
         this.state.food_data.map(food => {
-            if (food._id == id) {
+            if (food._id === id) {
                 order_details = food;
             }
             return food;
@@ -43,7 +43,7 @@ class PlaceOrder extends Component {
             food.order = 0;
             return food;
         });
-        // this.setState({ food_data: new_array});
+        this.setState({ food_data: new_array});
     }
 
     // Changing the quantity in the state which is emitted to the backend 
@@ -53,7 +53,7 @@ class PlaceOrder extends Component {
             event.target.value = 0;
         }
         var new_array = this.state.food_data.map(food => {
-            if (food._id == foodid) {
+            if (food._id === foodid) {
                 food.order = parseInt(event.target.value);
             }
             return food;

@@ -60,6 +60,18 @@ io.on("connection", socket => {
             })
     })
 
+    // Change the predicted quantity
+    // called from [FrontEnd] ./client/src/main/ChangePredicted.js
+    socket.on("ChangePred", predicted_data => {
+        Item.findByIdAndUpdate(
+            predicted_data._id,
+            { $set: { predQty: predicted_data.predQty}}
+        ).then(updatedDoc => {
+            // Emit event to update the Predicted Quantity accross the kitchen
+            io.sockets.emit("change_data");
+        })
+    })
+
     // disconnect fired when a client leaves the server
     socket.on("disconnect", () => {
         console.log("user disconneted");
