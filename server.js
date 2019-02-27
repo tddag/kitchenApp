@@ -23,10 +23,6 @@ const app = express();
 // Create server instance
 const server = http.createServer(app);
 
-app.use("*", (req, res) => {
-    res.send("Hello");
-})
-
 // Using Middleware
 // app.use(cors())
 
