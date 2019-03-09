@@ -9,7 +9,7 @@ var socket;
 class Header extends Component {
     constructor() {
         super();
-        let uri = process.env.NODE_ENV === 'production' ? 'https://dry-fjord-91856.herokuapp.com/' : 'http://localhost:5001';
+        let uri = process.env.NODE_ENV === 'production' ? 'https://td-kitchen-app.herokuapp.com/' : 'http://localhost:5001';
         this.state = {
             endpoint: uri
         };
