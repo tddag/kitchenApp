@@ -3,7 +3,7 @@ simple kitchen App built with MERN and SocketIO
 
 # live Demo:     
 
-*https://dry-fjord-91856.herokuapp.com/*
+*https://td-kitchen-app.herokuapp.com/kitchen*
 
 # Running locally: 
   - Clone the repository
